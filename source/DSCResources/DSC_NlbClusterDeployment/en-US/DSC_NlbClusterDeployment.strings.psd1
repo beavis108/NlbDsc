@@ -1,0 +1,25 @@
+# Localized resources for DSC_NlbClusterDeployment
+
+ConvertFrom-StringData @'
+    GetCurrentState = Getting the current state of the NLB cluster '{0}' on interface '{1}'. (NLBCD0001)
+    FeatureNotInstalled = The Windows features for Network Load Balancing are not installed. The NLB cluster '{0}' is reported as absent. (NLBCD0002)
+    ClusterFound = Found the NLB cluster '{0}' with primary IP address '{1}', subnet mask '{2}' and operation mode '{3}'. (NLBCD0003)
+    TestDesiredState = Determining whether the NLB cluster '{0}' is in the desired state. (NLBCD0004)
+    InDesiredState = The NLB cluster '{0}' is in the desired state. (NLBCD0005)
+    NotInDesiredState = The NLB cluster '{0}' is not in the desired state. (NLBCD0006)
+    EnsureMismatch = The NLB cluster '{0}' should be '{1}', but is '{2}'. (NLBCD0007)
+    SetDesiredState = Setting the desired state of the NLB cluster '{0}'. (NLBCD0008)
+    RestartRequiredAfterFeatureInstall = A restart is required to finish the installation of the Network Load Balancing features. The NLB cluster '{0}' will be created after the restart. (NLBCD0009)
+    CreatingCluster = Creating the NLB cluster '{0}' with primary IP address '{1}' on interface '{2}' in operation mode '{3}'. (NLBCD0010)
+    CreateClusterFailed = Failed to create the NLB cluster '{0}'. (NLBCD0011)
+    ChangingCluster = Changing the NLB cluster '{0}': name '{1}', operation mode '{2}'. (NLBCD0012)
+    ChangeClusterFailed = Failed to change the NLB cluster '{0}'. (NLBCD0013)
+    SubnetMaskMismatch = The primary IP address '{0}' of the NLB cluster has the subnet mask '{1}', but '{2}' was expected. The subnet mask of an existing virtual IP address can not be changed. Use a different primary IP address or recreate the cluster. (NLBCD0014)
+    RemovingCluster = Removing the NLB cluster '{0}' from interface '{1}'. (NLBCD0015)
+    RemoveClusterFailed = Failed to remove the NLB cluster '{0}'. (NLBCD0016)
+    InterfaceNotFound = The network interface '{0}' was not found on host '{1}'. (NLBCD0017)
+    InterfaceUsesDhcp = The network interface '{0}' uses DHCP. NLB requires a static IP address. Configure a static IP address or set OverrideDhcp to $true. (NLBCD0018)
+    MovingPrimaryIP = Changing the primary IP address of the NLB cluster '{0}' from '{1}' to '{2}'. (NLBCD0019)
+    ChangePrimaryIPFailed = Failed to change the primary IP address of the NLB cluster '{0}' to '{1}'. (NLBCD0020)
+    InterfaceCheckFailed = Could not verify the network interface '{0}' with Get-NlbClusterNodeNetworkInterface. {1} (NLBCD0021)
+'@

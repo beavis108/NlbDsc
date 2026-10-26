@@ -1,0 +1,13 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterNode")]
+class DSC_NlbClusterNode : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the node that should be a member of the NLB cluster.")] String NodeName;
+    [Required, Description("Specifies the name of the network interface on the node specified in `NodeName` that is bound to the NLB cluster.")] String NodeInterfaceName;
+    [Required, Description("Specifies the name of the network interface on the existing cluster host (`HostName`) to which NLB is bound.")] String InterfaceName;
+    [Write, Description("Specifies the name of an existing cluster host. Defaults to the local node. Must be set when the resource runs on the node that joins the cluster.")] String HostName;
+    [Write, Description("Specifies the host priority (unique host ID) of the node. Valid values are 1 through 32.")] UInt32 HostPriority;
+    [Write, Description("Specifies the initial host state of the node after a restart."), ValueMap{"Started","Stopped","Suspended"}, Values{"Started","Stopped","Suspended"}] String InitialHostState;
+    [Write, Description("Specifies if a suspended node stays suspended after a restart.")] Boolean RetainSuspended;
+    [Write, Description("Specifies if the node should be a member of the NLB cluster. Defaults to `Present`."), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+    [Read, Description("Returns the current state of the node in the NLB cluster, e.g. `Converged`.")] String State;
+};

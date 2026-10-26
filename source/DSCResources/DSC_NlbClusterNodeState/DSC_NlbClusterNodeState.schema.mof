@@ -1,0 +1,11 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterNodeState")]
+class DSC_NlbClusterNodeState : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the cluster node.")] String NodeName;
+    [Required, Description("Specifies the name of the network interface on the cluster host (`HostName`) to which NLB is bound.")] String InterfaceName;
+    [Required, Description("Specifies the desired host state of the node."), ValueMap{"Started","Stopped","Suspended"}, Values{"Started","Stopped","Suspended"}] String State;
+    [Write, Description("Specifies the name of a cluster host used to manage the node. Defaults to the local node.")] String HostName;
+    [Write, Description("Specifies if existing connections are drained before the node is stopped. Defaults to `$false`.")] Boolean Drain;
+    [Write, Description("Specifies the number of seconds to wait for the drain operation before the node is stopped.")] UInt32 DrainTimeout;
+    [Read, Description("Returns the state reported by NLB, e.g. `Converged`, `Draining`, `Stopped` or `Suspended`.")] String CurrentState;
+};

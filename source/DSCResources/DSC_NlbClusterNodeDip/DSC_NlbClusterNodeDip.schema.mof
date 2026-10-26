@@ -1,0 +1,10 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterNodeDip")]
+class DSC_NlbClusterNodeDip : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the network interface on the cluster host (`HostName`) to which NLB is bound.")] String InterfaceName;
+    [Key, Description("Specifies the dedicated IP address (IPv4 or IPv6) of the node.")] String IPAddress;
+    [Write, Description("Specifies the name of the cluster node the dedicated IP address belongs to. Defaults to the local node.")] String NodeName;
+    [Write, Description("Specifies the subnet mask of the dedicated IP address. Only evaluated when specified.")] String SubnetMask;
+    [Write, Description("Specifies the name of a cluster host used to manage the cluster. Defaults to the local node.")] String HostName;
+    [Write, Description("Specifies if the dedicated IP address should be present or absent. Defaults to `Present`."), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+};

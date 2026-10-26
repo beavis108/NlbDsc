@@ -1,0 +1,16 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterPortRuleNode")]
+class DSC_NlbClusterPortRuleNode : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the cluster node the settings apply to.")] String NodeName;
+    [Key, Description("Specifies the name of the network interface on the cluster host (`HostName`) to which NLB is bound.")] String InterfaceName;
+    [Key, Description("Specifies the cluster IP address of the port rule. Use `All` for a port rule that applies to all cluster IP addresses.")] String IPAddress;
+    [Key, Description("Specifies a port within the port range of the port rule, typically its start port.")] UInt16 StartPort;
+    [Write, Description("Specifies the load weight (0 - 100) of the node for the port rule. Only for port rules with the filtering mode `Multiple`. Can not be combined with `EqualLoad = $true`.")] UInt32 LoadWeight;
+    [Write, Description("Specifies if the node uses equal load distribution for the port rule. Only for port rules with the filtering mode `Multiple`.")] Boolean EqualLoad;
+    [Write, Description("Specifies the handling priority (1 - 32) of the node for the port rule. Only for port rules with the filtering mode `Single`.")] UInt32 HandlingPriority;
+    [Write, Description("Specifies if the port rule is enabled or disabled on this node."), ValueMap{"Enabled","Disabled"}, Values{"Enabled","Disabled"}] String State;
+    [Write, Description("Specifies if existing connections are drained before the port rule is disabled on the node. Defaults to `$false`.")] Boolean Drain;
+    [Write, Description("Specifies the number of minutes to wait for the drain operation before the port rule is disabled.")] UInt32 DrainTimeout;
+    [Write, Description("Specifies the name of a cluster host used to manage the cluster. Defaults to the local node.")] String HostName;
+    [Read, Description("Returns the filtering mode of the port rule.")] String Mode;
+};

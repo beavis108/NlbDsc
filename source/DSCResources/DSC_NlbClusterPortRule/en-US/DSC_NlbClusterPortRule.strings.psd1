@@ -1,0 +1,26 @@
+# Localized resources for DSC_NlbClusterPortRule
+
+ConvertFrom-StringData @'
+    GetCurrentState = Getting the current state of the NLB port rule for IP address '{0}' and start port '{1}' on interface '{2}'. (NLBPR0001)
+    FeatureNotInstalled = The Windows features for Network Load Balancing are not installed. The port rule is reported as absent. (NLBPR0002)
+    ClusterNotFound = No NLB cluster is bound to interface '{0}'. The port rule is reported as absent. (NLBPR0003)
+    PortRuleFound = Found the port rule '{0}' - '{1}' (IP address '{2}', protocol '{3}', mode '{4}', affinity '{5}', timeout '{6}'). (NLBPR0004)
+    PortRuleNotFound = No port rule for IP address '{0}' covers the port '{1}'. (NLBPR0005)
+    TestDesiredState = Determining whether the NLB port rule for IP address '{0}' and start port '{1}' is in the desired state. (NLBPR0006)
+    InDesiredState = The NLB port rule for IP address '{0}' and start port '{1}' is in the desired state. (NLBPR0007)
+    NotInDesiredState = The NLB port rule for IP address '{0}' and start port '{1}' is not in the desired state. (NLBPR0008)
+    EnsureMismatch = The NLB port rule should be '{0}', but is '{1}'. (NLBPR0009)
+    SetDesiredState = Setting the desired state of the NLB port rule for IP address '{0}' and start port '{1}'. (NLBPR0010)
+    FeatureRequired = The Windows features for Network Load Balancing are not installed. Create the cluster with the resource NlbClusterDeployment (or NlbClusterNode) before configuring port rules. (NLBPR0011)
+    ClusterRequired = No NLB cluster is bound to interface '{0}'. Create the cluster with the resource NlbClusterDeployment before configuring port rules. (NLBPR0012)
+    AddingPortRule = Adding the port rule '{0}' - '{1}' for IP address '{2}'. (NLBPR0013)
+    AddPortRuleFailed = Failed to add the port rule '{0}' - '{1}' for IP address '{2}'. (NLBPR0014)
+    UpdatingPortRule = Updating the port rule '{0}' - '{1}' for IP address '{2}' to '{3}' - '{4}'. (NLBPR0015)
+    UpdatePortRuleFailed = Failed to update the port rule '{0}' - '{1}' for IP address '{2}'. (NLBPR0016)
+    RemovingPortRule = Removing the port rule '{0}' - '{1}' for IP address '{2}'. (NLBPR0017)
+    RemovePortRuleFailed = Failed to remove the port rule '{0}' - '{1}' for IP address '{2}'. (NLBPR0018)
+    InvalidPortRange = The value of EndPort ('{1}') must be greater than or equal to the value of StartPort ('{0}'). (NLBPR0019)
+    EnablingPortRule = Enabling the port rule for IP address '{0}' and port '{1}' on all cluster nodes. (NLBPR0020)
+    DisablingPortRule = Disabling the port rule for IP address '{0}' and port '{1}' on all cluster nodes (drain: '{2}'). (NLBPR0021)
+    ChangePortRuleStateFailed = Failed to change the state of the port rule for IP address '{0}' and port '{1}'. (NLBPR0022)
+'@

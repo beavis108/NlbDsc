@@ -1,0 +1,10 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterVip")]
+class DSC_NlbClusterVip : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the network interface on the cluster host (`HostName`) to which NLB is bound.")] String InterfaceName;
+    [Key, Description("Specifies the virtual IP address (IPv4 or IPv6) of the cluster.")] String IPAddress;
+    [Write, Description("Specifies the subnet mask of the virtual IP address. Only evaluated when specified.")] String SubnetMask;
+    [Write, Description("Specifies the name of a cluster host used to manage the cluster. Defaults to the local node.")] String HostName;
+    [Write, Description("Specifies if the virtual IP address should be present or absent. Defaults to `Present`."), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+    [Read, Description("Returns whether the virtual IP address is the primary IP address of the cluster.")] Boolean IsPrimary;
+};

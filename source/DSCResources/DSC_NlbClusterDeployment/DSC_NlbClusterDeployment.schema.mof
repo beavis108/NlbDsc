@@ -1,0 +1,17 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterDeployment")]
+class DSC_NlbClusterDeployment : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the NLB cluster (full Internet name). The name of an existing cluster is changed when it differs.")] String ClusterName;
+    [Required, Description("Specifies the name of the network interface on the cluster host to which NLB is bound, e.g. `Ethernet`.")] String InterfaceName;
+    [Required, Description("Specifies the primary IP address (virtual IP address) of the NLB cluster. The primary IP address of an existing cluster is changed when it differs.")] String ClusterPrimaryIP;
+    [Required, Description("Specifies the subnet mask of the primary IP address of the NLB cluster.")] String SubnetMask;
+    [Write, Description("Specifies the name of the cluster host on which the cluster is created. Defaults to the local node.")] String HostName;
+    [Write, Description("Specifies the operation mode of the NLB cluster. Defaults to `Unicast`."), ValueMap{"Unicast","Multicast","IgmpMulticast"}, Values{"Unicast","Multicast","IgmpMulticast"}] String OperationMode;
+    [Write, Description("Specifies the dedicated IP address of the first node. Only used when the cluster is created. Defaults to the existing static IP address of the interface.")] String DedicatedIP;
+    [Write, Description("Specifies the subnet mask of the dedicated IP address. Only used when the cluster is created.")] String DedicatedIPSubnetMask;
+    [Write, Description("Specifies if the cluster may be created on an interface that uses DHCP. NLB then overwrites the DHCP setting of the interface. Defaults to `$false`.")] Boolean OverrideDhcp;
+    [Write, Description("Specifies if the NLB cluster should be present or absent. Defaults to `Present`."), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+    [Read, Description("Returns whether the Windows features `NLB` and `RSAT-NLB` are installed on the node.")] Boolean FeatureInstalled;
+    [Read, Description("Returns the names of the nodes that are members of the cluster.")] String Nodes[];
+    [Read, Description("Returns the cluster MAC address reported by the local NLB driver.")] String ClusterMacAddress;
+};

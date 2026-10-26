@@ -1,0 +1,17 @@
+[ClassVersion("1.0.0.0"), FriendlyName("NlbClusterPortRule")]
+class DSC_NlbClusterPortRule : OMI_BaseResource
+{
+    [Key, Description("Specifies the name of the network interface on the cluster host to which NLB is bound, e.g. `Ethernet`.")] String InterfaceName;
+    [Key, Description("Specifies the cluster IP address the port rule applies to. Use `All` for a port rule that applies to all cluster IP addresses.")] String IPAddress;
+    [Key, Description("Specifies the start port of the port rule. Valid values are 0 through 65535.")] UInt16 StartPort;
+    [Required, Description("Specifies the end port of the port rule. Valid values are 0 through 65535 and must be greater than or equal to `StartPort`.")] UInt16 EndPort;
+    [Write, Description("Specifies the protocol of the port rule. Defaults to `Both`."), ValueMap{"Both","Tcp","Udp"}, Values{"Both","Tcp","Udp"}] String Protocol;
+    [Write, Description("Specifies the filtering mode of the port rule. Defaults to `Multiple`."), ValueMap{"Single","Multiple","Disabled"}, Values{"Single","Multiple","Disabled"}] String Mode;
+    [Write, Description("Specifies the client affinity of the port rule. Only used when `Mode` is `Multiple`. Defaults to `Single`."), ValueMap{"None","Single","Network"}, Values{"None","Single","Network"}] String Affinity;
+    [Write, Description("Specifies the timeout in minutes for the client affinity. Only used when `Mode` is `Multiple`. Valid values are 0 through 240. Defaults to `0`.")] UInt32 Timeout;
+    [Write, Description("Specifies the name of the cluster host the port rule is configured on. Defaults to the local node.")] String HostName;
+    [Write, Description("Specifies if the port rule should be enabled or disabled on all cluster nodes (`Enable-NlbClusterPortRule`/`Disable-NlbClusterPortRule -ClusterWide`). Only evaluated when specified."), ValueMap{"Enabled","Disabled"}, Values{"Enabled","Disabled"}] String State;
+    [Write, Description("Specifies if existing connections are drained before the port rule is disabled. Defaults to `$false`.")] Boolean Drain;
+    [Write, Description("Specifies the number of minutes to wait for the drain operation before the port rule is disabled.")] UInt32 DrainTimeout;
+    [Write, Description("Specifies if the port rule should be present or absent. Defaults to `Present`."), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+};
